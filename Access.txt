@@ -1,0 +1,5 @@
+Admin : admin@admin.com
+Password : password
+
+User : user@admin.com
+Password : password
