@@ -5,9 +5,11 @@
 <?php
     // $conn = mysqli_connect(MYSQL_SERVER, MYSQL_ADMIN, MYSQL_TOCKEN, MYSQL_LOCATION);
     $conn=getConnection();
-	$uni_id = $_POST['id'];
-	$sql = "UPDATE tbluniversities SET uni_active='0' WHERE uni_id='$uni_id'";
+	$id = $_POST['id'];
+    $val=false;
+	// $sql = "UPDATE stripe_keys SET status='$val' WHERE id='$uni_id'";
+    $sql="UPDATE `stripe_keys` SET `status`='$val' WHERE `id`='$id'";
     mysqli_query($conn,$sql);
-    echo json_encode(array("status" => "SUCCESS", "msg" => "University deleted."));
+    echo json_encode(array("status" => "SUCCESS", "msg" => "Key was successfully deleted."));
 	mysqli_close($conn);
 ?>

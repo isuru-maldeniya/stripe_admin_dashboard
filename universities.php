@@ -83,14 +83,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-12">
-            <div class="card-header">University List</div>
+            <div class="card-header">API KEY List</div>
             <div class="card-body">
               <table id="dt-table" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
                 <thead>
                   <tr>
-                    <th>University</th>
-                    <th>Code</th>
-                    <th>Operations</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>API Key</th>
                   </tr>
                 </thead>
               </table>
@@ -212,10 +212,18 @@
 					dataType    : 'json', 
 					encode      : true
 				}).done(function(data) {
-					$('#uni_id').val(data.uni_id);
-					$('#uni_name').val(data.uni_name);
-					$('#uni_code').val(data.uni_code);
-					$('#uni_logo').val(data.uni_logo);
+					// $('#uni_id').val(data.uni_id);
+					// $('#uni_name').val(data.uni_name);
+					// $('#uni_code').val(data.uni_code);
+					// $('#uni_logo').val(data.uni_logo);
+
+
+          $('#uni_id').val(data.id);
+					$('#uni_name').val(data.stripe_key);
+					$('#uni_code').val(data.title);
+					$('#uni_logo').val(data.status);
+
+
 					$('#editModal').modal("show");
 				}).fail(function(data) {
 					console.error(data);

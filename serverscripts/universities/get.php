@@ -6,13 +6,18 @@
 	// $conn = mysqli_connect(MYSQL_SERVER, MYSQL_ADMIN, MYSQL_TOCKEN, MYSQL_LOCATION);
 	$conn=getConnection();
 	$uni_id = $_POST['id'];
-	$sql = "SELECT * FROM tbluniversities WHERE uni_id='$uni_id'";
+	$sql = "SELECT * FROM stripe_keys WHERE id='$uni_id'";
 	$result = mysqli_query($conn, $sql);
 	$row = mysqli_fetch_assoc($result);
 	echo json_encode(array(
-		"uni_id" => $row['uni_id'],
-		"uni_name" => $row['uni_name'],
-		"uni_code" => $row['uni_code'],
-		"uni_logo" => $row['uni_logo']
+		// "uni_id" => $row['id'],
+		// "uni_name" => $row['stripe_key'],
+		// "uni_code" => $row['title'],
+		// "uni_logo" => $row['status']
+
+		"id" => $row['id'],
+		"stripe_key" => $row['stripe_key'],
+		"title" => $row['title'],
+		"status" => $row['status']
 	));
 ?>
