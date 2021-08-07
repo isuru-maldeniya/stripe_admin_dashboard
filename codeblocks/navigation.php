@@ -14,7 +14,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Universities">
           <a class="nav-link" href="universities.php">
             <i class="fa fa-fw fa-university"></i>
-            <span class="nav-link-text">SAMPLE PAGE</span>
+            <span class="nav-link-text">API Keys</span>
           </a>
         </li>
         <?php

@@ -8,7 +8,7 @@
 	$id = $_POST['id'];
     $val=false;
 	// $sql = "UPDATE stripe_keys SET status='$val' WHERE id='$uni_id'";
-    $sql="UPDATE `stripe_keys` SET `status`='$val' WHERE `id`='$id'";
+    $sql="DELETE FROM `stripe_keys` WHERE `id`='$id'";
     mysqli_query($conn,$sql);
     echo json_encode(array("status" => "SUCCESS", "msg" => "Key was successfully deleted."));
 	mysqli_close($conn);

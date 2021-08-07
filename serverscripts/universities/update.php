@@ -5,14 +5,14 @@
 <?php
     // $conn = mysqli_connect(MYSQL_SERVER, MYSQL_ADMIN, MYSQL_TOCKEN, MYSQL_LOCATION);
     $conn=getConnection();
-    if (isset($_POST['uni_id'])){ $uni_id = mysqli_real_escape_string($conn, textencode($_POST['uni_id'])); }
-	if (isset($_POST['uni_name'])){ $uni_name = mysqli_real_escape_string($conn, textencode($_POST['uni_name'])); }
-    if (isset($_POST['uni_code'])){ $uni_code = mysqli_real_escape_string($conn, textencode($_POST['uni_code'])); }
-    if (isset($_POST['uni_logo'])){ $uni_logo = mysqli_real_escape_string($conn, textencode($_POST['uni_logo'])); }
-	if (!empty($_POST['uni_name']) and !empty($_POST['uni_code']) and !empty($_POST['uni_logo']) and !empty($_POST['uni_id'])){
-        $sql = "UPDATE tbluniversities SET uni_name='$uni_name', uni_code='$uni_code', uni_logo='$uni_logo' WHERE uni_id='$uni_id'";
+    if (isset($_POST['id_ed'])){ $id = mysqli_real_escape_string($conn, textencode($_POST['id_ed'])); }
+	if (isset($_POST['stripe_key_ed'])){ $stripe_key = mysqli_real_escape_string($conn, textencode($_POST['stripe_key_ed'])); }
+    if (isset($_POST['status_ed'])){ $status = mysqli_real_escape_string($conn, textencode($_POST['status_ed'])); }
+    if (isset($_POST['title_ed'])){ $title = mysqli_real_escape_string($conn, textencode($_POST['title_ed'])); }
+	if (!empty($_POST['id_ed']) and !empty($_POST['stripe_key_ed']) and !empty($_POST['status_ed']) and !empty($_POST['title_ed'])){
+        $sql = "UPDATE `stripe_keys` SET `stripe_key`='$stripe_key',`title`='$title',`status`='$status' WHERE `id`='$id'";
         mysqli_query($conn,$sql);
-        echo json_encode(array("status" => "SUCCESS", "msg" => "University updated."));
+        echo json_encode(array("status" => "SUCCESS", "msg" => "Key was successfully updated."));
 	}else{
 		echo json_encode(array("status" => "ERROR", "msg" => "Please enter all required data."));
 	}

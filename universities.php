@@ -57,8 +57,8 @@
                     </div> -->
                     <select class="custom-select"name="status" required>
                       <option selected disabled>Choose...</option>
-                      <option value="Valid">Valid</option>
-                      <option value="Invalid">Invalid</option>
+                      <option value=1>Active</option>
+                      <option value=0>Disable</option>
                       <!-- <option value="3">Three</option> -->
                     </select>
                   </div>
@@ -109,23 +109,38 @@
             <form id="formEdit" method="POST">
             <div class="modal-body">
                 <div class="form-group row">
-                  <label class="control-label col-sm-3">Name</label>
+                  <label class="control-label col-sm-3">Title</label>
                   <div class="col-sm-9">
-                    <input type="text" id="uni_name" name="uni_name" class="form-control" required>
-                    <input type="text" id="uni_id" name="uni_id" class="form-control" hidden>
+                    <input type="text" id="title" name="title_ed" class="form-control" required>
+                    <input type="text" id="id" name="id_ed" class="form-control" hidden>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="control-label col-sm-3">Code</label>
+                  <label class="control-label col-sm-3">Key</label>
                   <div class="col-sm-9">
-                    <input type="text" id="uni_code" name="uni_code" class="form-control" required>
+                    <input type="text" id="stripe_key" name="stripe_key_ed" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label class="control-label col-sm-3">Logo URL</label>
-                  <div class="col-sm-9">
+                  <label class="control-label col-sm-3">Status</label>
+
+
+
+
+                  <div class="input-group mb-3 col-sm-9">
+                    <!-- <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Select Status</label>
+                    </div> -->
+                    <select class="custom-select"id="status" name="status_ed" required>
+                      <option selected disabled>Choose...</option>
+                      <option value=1>Active</option>
+                      <option value=0>Disable</option>
+                      <!-- <option value="3">Three</option> -->
+                    </select>
+                  </div>
+                  <!-- <div class="col-sm-9">
                     <input type="text" id="uni_logo" name="uni_logo" class="form-control" required>
-                  </div>
+                  </div> -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -218,11 +233,15 @@
 					// $('#uni_logo').val(data.uni_logo);
 
 
-          $('#uni_id').val(data.id);
-					$('#uni_name').val(data.stripe_key);
-					$('#uni_code').val(data.title);
-					$('#uni_logo').val(data.status);
+          // $('#uni_id').val(data.id);
+					// $('#uni_name').val(data.title);
+					// $('#uni_code').val(data.stripe_key);
+					// $('#uni_logo').val(data.status);
 
+          $('#id').val(data.id);
+					$('#title').val(data.title);
+					$('#stripe_key').val(data.stripe_key);
+					$('#status').val(data.status);
 
 					$('#editModal').modal("show");
 				}).fail(function(data) {
@@ -233,7 +252,7 @@
 				bootbox.confirm({
 					title: 'Confirm Action',
 					closeButton: false,
-					message: "Are you sure do you want to delete this university?",
+					message: "Are you sure do you want to delete this key?",
 					buttons: {
 						cancel: {
 							label: 'No',

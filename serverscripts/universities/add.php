@@ -10,12 +10,12 @@
     if (isset($_POST['stripe_key'])){ $stripe_key = mysqli_real_escape_string($conn, textencode($_POST['stripe_key'])); }
     if (isset($_POST['status'])){ $status = mysqli_real_escape_string($conn, textencode($_POST['status'])); }
     $statusBool=false;
-    if($status==="Valid"){
-        $statusBool = true;
-    }
+    // if($status==="Valid"){
+    //     $statusBool = true;
+    // }
 	if (!empty($_POST['title']) and !empty($_POST['stripe_key']) and !empty($_POST['status'])){
 
-        $sql = "INSERT INTO `stripe_keys`( `stripe_key`, `title`, `status`) VALUES ('$stripe_key','$title','$statusBool')";
+        $sql = "INSERT INTO `stripe_keys`( `stripe_key`, `title`, `status`) VALUES ('$stripe_key','$title','$status')";
         mysqli_query($conn,$sql);
         echo json_encode(array("status" => "SUCCESS", "msg" => "key was successfully added."));
 	}else{

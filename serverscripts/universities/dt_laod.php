@@ -22,14 +22,25 @@ $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;
 $val=true;
 
+// $sql = "SELECT *  
+// 		FROM stripe_keys
+// 		WHERE  `status`='$val' AND (id LIKE '%".$requestData['search']['value']."%' OR  stripe_key LIKE '%".$requestData['search']['value']."%' OR title LIKE '%".$requestData['search']['value']."%') ";
+// if( !empty($requestData['search']['value']) ) {
+// 	// $sql.=" AND ( id LIKE '%".$requestData['search']['value']."%' OR ( stripe_key LIKE '%".$requestData['search']['value']."%' OR title LIKE '%".$requestData['search']['value']."%' )";
+// 	// $sql.=" OR title LIKE '%".$requestData['search']['value']."%' )";
+// 	// $sql.=" OR id LIKE '%".$requestData['search']['value']."%' )";
+// }
+
 $sql = "SELECT *  
 		FROM stripe_keys
-		WHERE  `status`='$val' AND (id LIKE '%".$requestData['search']['value']."%' OR  stripe_key LIKE '%".$requestData['search']['value']."%' OR title LIKE '%".$requestData['search']['value']."%') ";
+		WHERE 1=1";
 if( !empty($requestData['search']['value']) ) {
-	// $sql.=" AND ( id LIKE '%".$requestData['search']['value']."%' OR ( stripe_key LIKE '%".$requestData['search']['value']."%' OR title LIKE '%".$requestData['search']['value']."%' )";
+	$sql.=" AND  title LIKE '%".$requestData['search']['value']."%' ";
 	// $sql.=" OR title LIKE '%".$requestData['search']['value']."%' )";
 	// $sql.=" OR id LIKE '%".$requestData['search']['value']."%' )";
 }
+
+
 $query=mysqli_query($conn, $sql) or die("Process Failed : Status 2");
 $totalFiltered = mysqli_num_rows($query);
 
